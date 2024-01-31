@@ -5,7 +5,7 @@ app.use(express.json())
 app.get('/checkallusers',async(req,res)=>{
 	const capp = catalyst.initialize(req);
 	const allusers = await capp.userManagement().getAllUsers();
-	console.log(allusers);
+	// console.log(allusers);
 	res.status(200).send(allusers);
 })
 module.exports = app;
