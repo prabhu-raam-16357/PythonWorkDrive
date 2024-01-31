@@ -12,11 +12,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
-      - name: Loading Java17
-        uses: actions/setup-java@v4.0.0
-        with:
-          java-version: '17'
-          distribution: 'oracle'
+      # - name: Loading Java17
+      #   uses: actions/setup-java@v4.0.0
+      #   with:
+      #     java-version: '17'
+      #     distribution: 'oracle'
       - name: Installing catalyst
         run : npm i -g zcatalyst-cli
       - name: "Logging Current Dir"
