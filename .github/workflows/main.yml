@@ -19,6 +19,8 @@ jobs:
           distribution: 'oracle'
       - name: Installing catalyst
         run : npm i -g zcatalyst-cli
+      - name: "Logging Current Dir"
+        run : pwd
       - name: Installing Packages for 'Node'
         run: cd functions/Node/ && npm install --omit=dev
       - name: Deploying code to catalyst
