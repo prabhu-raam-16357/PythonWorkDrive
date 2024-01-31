@@ -1,0 +1,25 @@
+name: Create Release
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Use Java17
+        uses: Fleshgrinder/setup-java@1.0.0
+        with:
+          version: 17
+      - name: Installing catalyst
+        run : npm i -g zcatalyst-cli
+      - name: Installing Packages for 'v1'
+        run: cd functions/v1/ && npm install --omit=dev
+      - name: Deploying code to catalyst
+        run: catalyst deploy --only functions:v1 -p ${{ secrets.CATALYST_PROJECT_NAME}} --org ${{ secrets.CATALYST_ORG}} --token ${{ secrets.CATALYST_TOKEN}}
