@@ -15,7 +15,7 @@ public class Main implements CatalystAdvancedIOHandler {
 			switch(request.getRequestURI()) {
 				case "/": {
 					String name = request.getParameter("name");
-					LOGGER.log(Level.INFO, "Hello "+name);
+					LOGGER.log(Level.INFO, "Hello World"+name);
 					response.setStatus(200);
 					response.getWriter().write("Hello from Main.java");
 					break;	
