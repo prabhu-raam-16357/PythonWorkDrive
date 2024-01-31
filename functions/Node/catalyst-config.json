@@ -1,6 +1,6 @@
 {
 	"deployment": {
-		"name": "node",
+		"name": "Node",
 		"stack": "node18",
 		"type": "advancedio",
 		"env_variables": {}
