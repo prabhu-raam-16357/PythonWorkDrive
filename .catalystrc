@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "2113000000017025",
+      "name": "PythonWorkDrive",
+      "domain": {
+        "id": "10055386217",
+        "name": "pythonworkdrive-806298295.development"
+      },
+      "timezone": "America/Los_Angeles",
+      "env": [
+        {
+          "idx": 1,
+          "id": "806298295",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

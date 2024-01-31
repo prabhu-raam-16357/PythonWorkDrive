@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "targets": [
+      "workdrive_advanceIO",
+      "workdrive_event",
+      "python_work_drive_function"
+    ],
+    "ignore": [],
+    "source": "functions"
+  },
+  "client": {
+    "source": "client"
+  }
+}
