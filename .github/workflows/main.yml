@@ -21,7 +21,7 @@ jobs:
       - name: Seetup Python3.9
         uses: actions/setup-python@v5.0.0
         with:
-          python-version: 3.9.10
+          python-version: '3.9.15'
       - name: Installing catalyst
         run : npm i -g zcatalyst-cli
       - name: "Logging Current Dir"
