@@ -1,0 +1,11 @@
+{
+	"deployment": {
+		"name": "Java",
+		"stack": "java17",
+		"type": "advancedio",
+		"env_variables": {}
+	},
+	"execution": {
+		"main": "Main"
+	}
+}
