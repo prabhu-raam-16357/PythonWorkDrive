@@ -5,7 +5,8 @@
   "functions": {
     "targets": [
       "Java",
-      "Node"
+      "Node",
+      "Python"
     ],
     "ignore": [
       ".output"
