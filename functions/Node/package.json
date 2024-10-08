@@ -5,6 +5,6 @@
 	"author": "prabhu.raam+16@zohotest.com",
 	"dependencies": {
 		"zcatalyst-sdk-node": "latest",
-		"express": "latest
+		"express": "latest"
 	}
 }
