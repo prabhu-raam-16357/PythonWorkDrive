@@ -38,13 +38,17 @@ jobs:
   Node_Java_Python_Install:
     steps:
       - apt-get update 
-      - apt-get -y install openjdk-8-jdk curl
+      - apt-get -y install openjdk-17-jdk curl
       - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - 
       - apt-get install -y nodejs
-      - apt-get install -y software-properties-common
-      - add-apt-repository ppa:deadsnakes/ppa
-      - apt-get update
-      - apt-get install -y python3.9
+      - apt-get update && \
+      - apt-get install -y software-properties-common wget curl && \
+      - add-apt-repository ppa:deadsnakes/ppa && \
+      - apt-get update && \
+      - apt-get install -y python3.9 && \
+      - wget https://bootstrap.pypa.io/get-pip.py && \
+      - python3.9 get-pip.py && \
+      - rm get-pip.py
       - npm i -g zcatalyst-cli
       - catalyst -v
       - cd functions/Node
