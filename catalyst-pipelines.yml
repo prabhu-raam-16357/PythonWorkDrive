@@ -11,13 +11,10 @@ images:
 jobs:
   Deploy_Client_Functions:
     steps:
-      - apt-get update && \
+      - apt-get update 
+      - apt-get -y install openjdk-17-jdk curl
       - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - 
       - apt-get install -y nodejs
-      - node -v
-      - apt-get update && \
-      - apt-get -y install openjdk-17-jdk curl
-      - javac --version
       - apt-get update && \
       - apt-get install -y software-properties-common wget curl && \
       - add-apt-repository ppa:deadsnakes/ppa && \
@@ -26,7 +23,6 @@ jobs:
       - wget https://bootstrap.pypa.io/get-pip.py && \
       - python3.9 get-pip.py && \
       - rm get-pip.py
-      - python3 --version
       - npm i -g zcatalyst-cli
       - catalyst -v
       - cd functions/Node
