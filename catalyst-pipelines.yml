@@ -34,14 +34,17 @@ jobs:
     steps:
       - echo "Hello World!"
   Install-CatalystCLI:
-    image: Node
     steps:
       - npm i -g zcatalyst-cli
       - catalyst -v
+  NodePackageInstall:
+    steps:
+        - cd functions/Node
+        - npm install
+        
 stages:
   - name: build
+    image: Node
     jobs:
-      - - hello
-        - world
-      - hello-world
-      - Install-CatalystCLI
+      - - Install-CatalystCLI
+        - NodePackageInstall
