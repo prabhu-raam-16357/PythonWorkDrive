@@ -1,4 +1,28 @@
-version: 1.0
+version: 1
+runners:
+  Machine:
+    config-id: 2
+images:
+  DeployMachine:
+    image: Ubuntu
+    auth:
+      username: prabhu
+      password: Catalyst@123
+  Node:
+    image: node:18
+    auth:
+      username: prabhu
+      password: Catalyst@123
+  Java:
+    image: openjdk:17
+    auth:
+      username: prabhu
+      password: Catalyst@123
+  Python:
+    image: python:3.9
+    auth:
+      username: prabhu
+      password: Catalyst@123
 jobs:
   hello:
     steps:
@@ -9,6 +33,10 @@ jobs:
   hello-world:
     steps:
       - echo "Hello World!"
+  Install-CatalystCLI:
+    image: Node
+    steps:
+      - npm i -g zcatalyst-cli
 stages:
   - name: build
     jobs:
