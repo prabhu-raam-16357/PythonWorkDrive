@@ -9,12 +9,15 @@ images:
       username: << env.USER_NAME >>
       password: << env.USER_PASSWORD >>
 jobs:
-  Deploy_Client_Functions:
+  Install_Node_Java_Python:
     steps:
-      - apt-get update 
-      - apt-get -y install openjdk-17-jdk curl
+      - apt-get update && \
       - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - 
       - apt-get install -y nodejs
+      - node -v && npm -v
+      - apt-get update && \
+      - apt-get -y install openjdk-17-jdk curl
+      - javac --version
       - apt-get update && \
       - apt-get install -y software-properties-common wget curl && \
       - add-apt-repository ppa:deadsnakes/ppa && \
@@ -23,14 +26,25 @@ jobs:
       - wget https://bootstrap.pypa.io/get-pip.py && \
       - python3.9 get-pip.py && \
       - rm get-pip.py
+      - python3 -m pip --version
+      - python3 --version
+  Install_Catalyst_CLI:
+    steps:
       - npm i -g zcatalyst-cli
       - catalyst -v
+  Install_Node_Packages_for_Node_functions:
+    steps:
       - cd functions/Node
       - npm install
+  Deploy_Client_Functions:
+    steps:
       - cd ../..
       - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 stages:
   - name: build
     image: DeployMachine
     jobs:
+      - Install_Node_Java_Python
+      - Install_Catalyst_CLI
+      - Install_Node_Packages_for_Node_functions
       - Deploy_Client_Functions
