@@ -14,7 +14,7 @@ jobs:
       - apt-get update && \
       - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - 
       - apt-get install -y nodejs
-      - node -v && npm -v
+      - node -v
       - apt-get update && \
       - apt-get -y install openjdk-17-jdk curl
       - javac --version
