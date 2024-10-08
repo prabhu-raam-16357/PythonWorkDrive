@@ -43,3 +43,4 @@ stages:
       - - hello
         - world
       - hello-world
+      - Install-CatalystCLI
