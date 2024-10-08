@@ -45,11 +45,13 @@ jobs:
       - add-apt-repository ppa:deadsnakes/ppa
       - apt-get update
       - apt-get install -y python3.9
+      - npm i -g zcatalyst-cli
+      - catalyst -v
+      - cd functions/Node
+      - npm install
+      - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 stages:
   - name: build
     image: DeployMachine
     jobs:
       - Node_Java_Python_Install
-      - - Install-CatalystCLI
-        - NodePackageInstall
-      - CLIDeploy
