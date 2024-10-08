@@ -37,6 +37,7 @@ jobs:
     image: Node
     steps:
       - npm i -g zcatalyst-cli
+      - catalyst -v
 stages:
   - name: build
     jobs:
