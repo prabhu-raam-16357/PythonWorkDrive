@@ -9,7 +9,7 @@ images:
       username: << env.USER_NAME >>
       password: << env.USER_PASSWORD >>
 jobs:
-  Install_Node_Java_Python:
+  Deploy_Client_Functions:
     steps:
       - apt-get update && \
       - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - 
@@ -27,23 +27,14 @@ jobs:
       - python3.9 get-pip.py && \
       - rm get-pip.py
       - python3 --version
-  Install_Catalyst_CLI:
-    steps:
       - npm i -g zcatalyst-cli
       - catalyst -v
-  Install_Node_Packages_for_Node_functions:
-    steps:
       - cd functions/Node
       - npm install
-  Deploy_Client_Functions:
-    steps:
       - cd ../..
       - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 stages:
   - name: build
     image: DeployMachine
     jobs:
-      - Install_Node_Java_Python
-      - Install_Catalyst_CLI
-      - Install_Node_Packages_for_Node_functions
       - Deploy_Client_Functions
