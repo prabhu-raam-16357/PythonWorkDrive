@@ -54,6 +54,7 @@ jobs:
       - catalyst -v
       - cd functions/Node
       - npm install
+      - cd ../..
       - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 stages:
   - name: build
