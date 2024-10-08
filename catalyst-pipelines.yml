@@ -34,6 +34,7 @@ jobs:
         - npm install
   CLIDeploy:
     steps:
+      - cd ../..
       - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
   Node_Java_Python_Install:
     steps:
@@ -45,7 +46,7 @@ jobs:
       - apt-get install -y software-properties-common wget curl && \
       - add-apt-repository ppa:deadsnakes/ppa && \
       - apt-get update && \
-      - apt-get install -y python3.9 && \
+      - apt-get install -y python3.9 python3.9-distutils && \
       - wget https://bootstrap.pypa.io/get-pip.py && \
       - python3.9 get-pip.py && \
       - rm get-pip.py
