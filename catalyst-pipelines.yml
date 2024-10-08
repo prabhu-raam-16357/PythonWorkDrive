@@ -6,37 +6,10 @@ images:
   DeployMachine:
     image: ubuntu
     auth:
-      username: prabhu16357
-      password: Catalyst@123
-  Node:
-    image: node:18
-    auth:
-      username: prabhu16357
-      password: Catalyst@123
-  Java:
-    image: openjdk:17
-    auth:
-      username: prabhu16357
-      password: Catalyst@123
-  Python:
-    image: python:3.9
-    auth:
-      username: prabhu16357
-      password: Catalyst@123
+      username: << env.USER_NAME >>
+      password: << env.USER_PASSWORD >>
 jobs:
-  Install-CatalystCLI:
-    steps:
-      - npm i -g zcatalyst-cli
-      - catalyst -v
-  NodePackageInstall:
-    steps:
-        - cd functions/Node
-        - npm install
-  CLIDeploy:
-    steps:
-      - cd ../..
-      - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
-  Node_Java_Python_Install:
+  Deploy_Client_Functions:
     steps:
       - apt-get update 
       - apt-get -y install openjdk-17-jdk curl
@@ -60,4 +33,4 @@ stages:
   - name: build
     image: DeployMachine
     jobs:
-      - Node_Java_Python_Install
+      - Deploy_Client_Functions
