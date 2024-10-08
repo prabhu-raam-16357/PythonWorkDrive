@@ -6,22 +6,22 @@ images:
   DeployMachine:
     image: Ubuntu
     auth:
-      username: prabhu
+      username: prabhu16357
       password: Catalyst@123
   Node:
     image: node:18
     auth:
-      username: prabhu
+      username: prabhu16357
       password: Catalyst@123
   Java:
     image: openjdk:17
     auth:
-      username: prabhu
+      username: prabhu16357
       password: Catalyst@123
   Python:
     image: python:3.9
     auth:
-      username: prabhu
+      username: prabhu16357
       password: Catalyst@123
 jobs:
   hello:
