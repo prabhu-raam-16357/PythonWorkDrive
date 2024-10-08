@@ -24,15 +24,6 @@ images:
       username: prabhu16357
       password: Catalyst@123
 jobs:
-  hello:
-    steps:
-      - echo "Hello"
-  world:
-    steps:
-      - echo "World"
-  hello-world:
-    steps:
-      - echo "Hello World!"
   Install-CatalystCLI:
     steps:
       - npm i -g zcatalyst-cli
@@ -41,10 +32,24 @@ jobs:
     steps:
         - cd functions/Node
         - npm install
-        
+  CLIDeploy:
+    steps:
+      - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
+  Node_Java_Python_Install:
+    steps:
+      - apt-get update 
+      - apt-get -y install openjdk-8-jdk curl
+      - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - 
+      - apt-get install -y nodejs
+      - apt-get install -y software-properties-common
+      - add-apt-repository ppa:deadsnakes/ppa
+      - apt-get update
+      - apt-get install -y python3.9
 stages:
   - name: build
-    image: Node
+    image: DeployMachine
     jobs:
+      - Node_Java_Python_Install
       - - Install-CatalystCLI
         - NodePackageInstall
+      - CLIDeploy
