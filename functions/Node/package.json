@@ -4,6 +4,7 @@
 	"main": "index.js",
 	"author": "prabhu.raam+16@zohotest.com",
 	"dependencies": {
-		"zcatalyst-sdk-node": "latest"
+		"zcatalyst-sdk-node": "latest",
+		"express": "latest
 	}
 }
