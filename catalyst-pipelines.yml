@@ -4,7 +4,7 @@ runners:
     config-id: 2
 images:
   DeployMachine:
-    image: Ubuntu
+    image: ubuntu
     auth:
       username: prabhu16357
       password: Catalyst@123
