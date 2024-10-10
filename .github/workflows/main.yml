@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: zenithstar/zcatalyst-cli:test
+    runs-on: ubuntu
     steps:
       # - uses: actions/checkout@v1
       # - name: Loading Node.js
