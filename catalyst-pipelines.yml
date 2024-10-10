@@ -1,7 +1,7 @@
 version: 1
 runners:
   Machine:
-    config-id: 2
+    config-id: 3
 images:
   DeployMachine:
     image: zenithstar/zcatalyst-cli:testub
@@ -10,6 +10,7 @@ images:
       password: << env.USER_PASSWORD >>
 jobs:
   Deploy_Client_Functions:
+    runner: Machine
     steps:
       - apt-get update 
       - apt-get -y install openjdk-17-jdk curl
