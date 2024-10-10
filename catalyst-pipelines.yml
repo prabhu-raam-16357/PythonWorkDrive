@@ -25,8 +25,6 @@ jobs:
       - python3.9 get-pip.py && \
       - rm get-pip.py
       - npm i -g zcatalyst-cli
-  Docker_Check:
-    steps:
       - catalyst -v
       - cd functions/Node
       - npm install
@@ -36,4 +34,4 @@ stages:
   - name: build
     image: DeployMachine
     jobs:
-      - Docker_Check
+      - Deploy_Client_Functions
