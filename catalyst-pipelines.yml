@@ -14,11 +14,11 @@ jobs:
         upload:
             - type: zip
               regex: 
-                    - 'client/**'
+                    - '/catalyst/client/**'
               name: client
               location: stratus://pipeline-upload/
     steps:
-        - ls
+        - pwd
     
   Deploy_Client_Functions:
     when:
