@@ -9,7 +9,22 @@ images:
       username: << env.USER_NAME >>
       password: << env.USER_PASSWORD >>
 jobs:
+  UploadStatus:
+    artifacts:
+        upload:
+            - type: zip
+              regex: 
+                    - 'client/**'
+              name: client
+              location: stratus://pipeline-upload/
+    steps:
+        - echo "Uploading client folder"
+    
   Deploy_Client_Functions:
+    when:
+        equal:
+          - << status.Pipeline1.UploadStatus >>
+          - success
     runner: Machine
     steps:
       - apt-get update 
@@ -30,8 +45,10 @@ jobs:
       - npm install
       - cd ../..
       - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
+
 stages:
   - name: build
     image: DeployMachine
     jobs:
+      - UploadStatus
       - Deploy_Client_Functions
