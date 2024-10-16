@@ -23,7 +23,7 @@ jobs:
   Deploy_Client_Functions:
     when:
         equal:
-          - << status.Pipeline1.UploadStatus >>
+          - << status.build.UploadStatus >>
           - success
     runner: Machine
     steps:
