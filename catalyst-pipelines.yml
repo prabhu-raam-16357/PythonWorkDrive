@@ -18,7 +18,7 @@ jobs:
               name: client
               location: stratus://pipeline-upload/
     steps:
-        - echo "Uploading client folder"
+        - ls
     
   Deploy_Client_Functions:
     when:
