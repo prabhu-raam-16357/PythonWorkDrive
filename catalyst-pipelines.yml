@@ -9,7 +9,7 @@ images:
       username: << env.USER_NAME >>
       password: << env.USER_PASSWORD >>
 jobs:
-  UploadStatus:
+   UploadStatus:
     artifacts:
         upload:
             - type: zip
@@ -17,10 +17,15 @@ jobs:
                     - '/catalyst/client/**'
               name: client
               location: stratus://pipeline-upload/
+    notify:
+        on-start:
+            email:
+              to: 
+                - prabhu.raam@zohocorp.com
     steps:
         - pwd
     
-  Deploy_Client_Functions:
+   Deploy_Client_Functions:
     when:
         equal:
           - << status.build.UploadStatus >>
