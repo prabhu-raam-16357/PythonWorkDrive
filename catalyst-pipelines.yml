@@ -67,4 +67,5 @@ stages:
     image: DeployMachine
     jobs:
       - UploadStatus
+      - DeployApproval
       - Deploy_Client_Functions
