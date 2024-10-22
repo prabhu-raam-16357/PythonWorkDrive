@@ -71,8 +71,7 @@ jobs:
           file: test/
     runner: Machine
     steps:
-      - cd test
-      - ls
+      - pwd
 
 
 stages:
