@@ -66,8 +66,8 @@ jobs:
     artifacts:
       download:
         - type: zip
-          name: client
-          location: stratus://pipeline-upload/client.zip
+          name: client.zip
+          location: stratus://pipeline-upload/
           file: test/
     runner: Machine
     steps:
