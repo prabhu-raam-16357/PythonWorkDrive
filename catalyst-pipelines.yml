@@ -9,43 +9,43 @@ images:
       username: << env.USER_NAME >>
       password: << env.USER_PASSWORD >>
 jobs:
-   UploadStatus:
+  UploadStatus:
     artifacts:
-        upload:
-            - type: zip
-              regex: 
-                    - '/catalyst/client/**'
-              name: client
-              location: stratus://pipeline-upload/
+      upload:
+        - type: zip
+          regex:
+            - /catalyst/client/**
+          name: client
+          location: stratus://pipeline-upload/
     notify:
-        on-start:
-            email:
-              to: 
-                - prabhu.raam@zohocorp.com
-        on-end:
-            email:
-              to: 
-                - prabhu.raam@zohocorp.com
+      on-start:
+        email:
+          to:
+            - prabhu.raam@zohocorp.com
+      on-end:
+        email:
+          to:
+            - prabhu.raam@zohocorp.com
     steps:
-        - pwd
+      - pwd
 
-   DeployApproval:
+  DeployClientApproval:
     type: approval
     specification:
-        reviewers:
-            - prabhu.raam+16@zohotest.com
-        message: New Client added
-    
-   Deploy_Client_Functions:
+      reviewers:
+        - prabhu.raam+16@zohotest.com
+      message: New Client added
+
+  Deploy_Client_Functions:
     when:
-        equal:
-          - << status.build.DeployApproval >>
-          - success
+      equal:
+        - << status.build.DeployClientApproval >>
+        - success
     runner: Machine
     steps:
-      - apt-get update 
+      - apt-get update
       - apt-get -y install openjdk-17-jdk curl
-      - curl -fsSL https://deb.nodesource.com/setup_18.x | bash - 
+      - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
       - apt-get install -y nodejs
       - apt-get update && \
       - apt-get install -y software-properties-common wget curl && \
@@ -62,10 +62,25 @@ jobs:
       - cd ../..
       - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 
+  downloadArtifact:
+    artifacts:
+      download:
+        - type: file
+          name: client
+          location: stratus://pipeline-upload/client.zip
+          file: test/
+    runner: Machine
+    image: DeployMachine
+    steps:
+      - cd test
+      - ls
+
+
 stages:
   - name: build
     image: DeployMachine
     jobs:
       - UploadStatus
-      - DeployApproval
-      - Deploy_Client_Functions
+      - DeployClientApproval
+      - downloadArtifact
+    #   - Deploy_Client_Functions
