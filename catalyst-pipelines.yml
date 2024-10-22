@@ -65,12 +65,11 @@ jobs:
   downloadArtifact:
     artifacts:
       download:
-        - type: file
+        - type: zip
           name: client
           location: stratus://pipeline-upload/client.zip
           file: test/
     runner: Machine
-    image: DeployMachine
     steps:
       - cd test
       - ls
