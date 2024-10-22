@@ -68,7 +68,7 @@ jobs:
         - type: zip
           name: client.zip
           location: stratus://pipeline-upload/
-          file: test/
+          file: /catalyst/test/
     runner: Machine
     steps:
       - pwd
