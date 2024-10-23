@@ -15,7 +15,7 @@ jobs:
         - type: zip
           regex:
             - /catalyst/client/**
-          name: client
+          name: test
           location: stratus://pipeline-upload/
     notify:
       on-start:
