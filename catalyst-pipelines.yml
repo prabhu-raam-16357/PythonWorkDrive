@@ -28,6 +28,7 @@ jobs:
             - prabhu.raam@zohocorp.com
     steps:
       - pwd
+      - cd client
 
   DeployClientApproval:
     type: approval
