@@ -60,6 +60,13 @@ jobs:
       - printenv
       - catalyst deploy --project << env.PROJECT_ID >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 
+  CLI_Specific_Deploy:
+    runner: Machine
+    steps:
+        - npm install -g zcatalyst-cli
+        - echo << env.ref >>
+        - node script.js
+
 #   downloadArtifact:
 #     artifacts:
 #       download:
@@ -80,4 +87,5 @@ stages:
     #   - UploadStatus
     #   - DeployClientApproval
     #   - downloadArtifact
-      - Deploy_Client_Functions
+    #   - Deploy_Client_Functions
+        - CLI_Specific_Deploy
