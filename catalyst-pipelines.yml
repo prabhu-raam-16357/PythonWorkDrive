@@ -30,18 +30,14 @@ jobs:
       - pwd
       - cd client
 
-  DeployClientApproval:
-    type: approval
-    specification:
-      reviewers:
-        - prabhu.raam+16@zohotest.com
-      message: New Client added
+#   DeployClientApproval:
+#     type: approval
+#     specification:
+#       reviewers:
+#         - prabhu.raam+16@zohotest.com
+#       message: New Client added
 
   Deploy_Client_Functions:
-    when:
-      equal:
-        - << status.build.DeployClientApproval >>
-        - success
     runner: Machine
     steps:
       - apt-get update
@@ -61,6 +57,7 @@ jobs:
       - cd functions/Node
       - npm install
       - cd ../..
+      - printenv
       - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 
 #   downloadArtifact:
@@ -81,6 +78,6 @@ stages:
     image: DeployMachine
     jobs:
       - UploadStatus
-      - DeployClientApproval
+    #   - DeployClientApproval
     #   - downloadArtifact
       - Deploy_Client_Functions
