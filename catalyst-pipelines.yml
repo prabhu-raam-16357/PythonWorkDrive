@@ -58,7 +58,7 @@ jobs:
       - npm install
       - cd ../..
       - printenv
-      - catalyst deploy --project << env.PROJECT_NAME >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
+      - catalyst deploy --project << env.PROJECT_ID >> --org << env.CATALYST_ORG >> --token << env.CATALYST_TOKEN >>
 
 #   downloadArtifact:
 #     artifacts:
