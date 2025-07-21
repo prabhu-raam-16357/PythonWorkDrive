@@ -64,7 +64,7 @@ jobs:
     runner: Machine
     steps:
         - npm install -g zcatalyst-cli
-        - echo << env.ref >>
+        - echo << event.ref >>
         - node script.js
 
 #   downloadArtifact:
