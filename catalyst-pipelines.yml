@@ -77,7 +77,7 @@ stages:
   - name: build
     image: DeployMachine
     jobs:
-      - UploadStatus
+    #   - UploadStatus
     #   - DeployClientApproval
     #   - downloadArtifact
       - Deploy_Client_Functions
