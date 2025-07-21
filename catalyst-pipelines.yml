@@ -2,12 +2,12 @@ version: 1
 runners:
   Machine:
     config-id: 3
-images:
-  DeployMachine:
-    image: ubuntu
-    auth:
-      username: << env.USER_NAME >>
-      password: << env.USER_PASSWORD >>
+# images:
+#   DeployMachine:
+#     image: ubuntu
+#     auth:
+#       username: << env.USER_NAME >>
+#       password: << env.USER_PASSWORD >>
 jobs:
   UploadStatus:
     artifacts:
@@ -75,7 +75,7 @@ jobs:
 
 stages:
   - name: build
-    image: DeployMachine
+    # image: DeployMachine
     jobs:
     #   - UploadStatus
     #   - DeployClientApproval
